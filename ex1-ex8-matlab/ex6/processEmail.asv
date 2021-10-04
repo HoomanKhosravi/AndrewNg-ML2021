@@ -76,15 +76,6 @@ while ~isempty(email_contents)
     end
     
     
-    for i = 1:length(vocabList)
-        
-        if strcmp(vocabList{i},str) == 1
-
-            word_indices = [word_indices; i]
-
-            break
-        end
-    end
     
     
     % Look up the word in the dictionary and add to word_indices if
