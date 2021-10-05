@@ -13,19 +13,14 @@ idx = zeros(size(X,1), 1);
 disx = zeros(size(X,1), 1);
 
 
-for i = 1:size(X,1)
-    for j = 1:size(centroids,1)
-        dis = sum( (X(i,:) - centroids(j,:)).^2 );
+for i = 1:length(X)
+    for j = 1:length(centroids)
+        
         if idx(i) == 0
-            disx(i) = dis;
+            disx(i) = sum( (X(i) - centroids(j)).^2 );
             idx(i) = j;
         else
-            
-            if  dis < disx(i) 
-                disx(i)  = dis;
-                idx(i) = j;
-            end
-        end
+    
 
 
     end
