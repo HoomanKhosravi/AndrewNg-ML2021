@@ -13,7 +13,17 @@ F1 = 0;
 stepsize = (max(pval) - min(pval)) / 1000;
 for epsilon = min(pval):stepsize:max(pval)
     
-    % ====================== YOUR CODE HERE ======================
+    anomaly = pval < epsilon; % 1 if pval is an anomaly
+
+    tp = sum(anomaly.*yval);
+    fp = sum(anomaly.*(1-yval));
+    fn = sum((1-anomaly).*(yval));
+    recal = tp/(tp+fn); 
+    pres =  tp/(tp+fp);
+    F1 = max(F1, 2*(recal*pres)/(recal+pres) );
+
+
+        % ====================== YOUR CODE HERE ======================
     % Instructions: Compute the F1 score of choosing epsilon as the
     %               threshold and place the value in F1. The code at the
     %               end of the loop will compare the F1 score for this
